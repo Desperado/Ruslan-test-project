@@ -1,10 +1,18 @@
 from django.conf.urls.defaults import *
+from jobtest_Ruslan.views import current_datetime, main_page
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+	
+	('^time/$', current_datetime),
+	('^$', main_page),
+
+	#(r'^time/plus/(\d{1,2})/$', hours_ahead),
+
+
     # Example:
     # (r'^jobtest_Ruslan/', include('jobtest_Ruslan.foo.urls')),
 

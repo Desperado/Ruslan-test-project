@@ -1,0 +1,9 @@
+[{"pk": 1, 
+ "model": "mydata.mybio", 
+ "fields": {
+   "first_name": "Ruslan", 
+   "last_name": "Strazhnyk", 
+   "bio": "I was born January 27, 1984, Aquarius, like music, mountain bike and snowboard...",
+   "contacts": "0632311999, Lviv"}}
+]
+

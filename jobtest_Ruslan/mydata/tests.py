@@ -1,7 +1,5 @@
 from tddspry.django import DatabaseTestCase, HttpTestCase
-from django.core.urlresolvers import reverse
-
-
+from django.contrib.auth.models import User
 from models import Mybio
 
 
@@ -9,7 +7,7 @@ test_contact = {"bio": "I was born January 27, 1984, Aquarius, like music, mount
                 "first_name":"Ruslan",
                 "last_name":"Strazhnyk",
                 "contacts": "0632311999, Lviv"}
- 
+
 
 class TestFixture(DatabaseTestCase):
     def test_my_contact_exists(self):
@@ -18,6 +16,8 @@ class TestFixture(DatabaseTestCase):
         """
         self.assert_count(Mybio, 1)
         self.assert_read(Mybio, **test_contact)
+
+
 
 class TestContactsViews(HttpTestCase):
     def test_contacts_view(self):
@@ -29,10 +29,3 @@ class TestContactsViews(HttpTestCase):
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])
         self.find(test_contact["contacts"])
-
-
-
-
-   
-
-

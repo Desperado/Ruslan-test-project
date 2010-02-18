@@ -10,7 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 	
 	
-	('^$', main_page),
+	#('^$', main_page),
 
 	#(r'^time/plus/(\d{1,2})/$', hours_ahead),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),

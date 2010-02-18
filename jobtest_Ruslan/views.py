@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from mydata.models import Mybio
 import datetime
 
-#@login_required
+@login_required
 def main_page(request):
      """
      Generates main page with bio data

@@ -1,5 +1,5 @@
 from django.core import management
-from django.core.context_processors import csrf
+#from django.core.context_processors import csrf
 
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from mydata.models import Mybio
 import datetime
 
-@login_required
+#@login_required
 def main_page(request):
      """
      Generates main page with bio data

@@ -13,10 +13,10 @@ urlpatterns = patterns('',
 	('^$', main_page),
 
 	#(r'^time/plus/(\d{1,2})/$', hours_ahead),
-        #url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),
+        url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),
         #(r'^accounts/login/$', login),
-        #(r'^accounts/logout/$', logout),
-        #(r'^accounts/profile/$', main_page),
+        (r'^accounts/logout/$', logout),
+        (r'^accounts/profile/$', main_page),
 
 
 

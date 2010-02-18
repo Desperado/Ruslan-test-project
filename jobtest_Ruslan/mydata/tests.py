@@ -27,9 +27,9 @@ class TestContactsViews(HttpTestCase):
         Test if contact view contains all relevant data from fixture
         """
         self.login(test_account["username"],
-                   test_account["password"],) 
+                   test_account["password"], 'accounts/profile') 
 
-        self.go("accounts/login", kwargs=test_contact)    
+        #self.go("accounts/login", kwargs=test_contact)    
         self.find(test_contact["bio"])
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])

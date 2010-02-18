@@ -3,6 +3,8 @@ from django.core.urlresolvers import reverse
 
 
 from models import Mybio
+test_account = {"username":"baby",
+                "password":"77722255"}
 
 
 test_contact = {"bio": "I was born January 27, 1984, Aquarius, like music, mountain bike and snowboard...",
@@ -24,7 +26,10 @@ class TestContactsViews(HttpTestCase):
         """
         Test if contact view contains all relevant data from fixture
         """
-        self.go("", kwargs=test_contact)    
+        self.login(test_account["username"],
+                   test_account["password"],) 
+
+        self.go("accounts/login", kwargs=test_contact)    
         self.find(test_contact["bio"])
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])

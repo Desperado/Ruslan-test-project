@@ -65,26 +65,31 @@ SECRET_KEY = 'zelj#0!8duvg%9)6f2$!u9ep+(-&4)q=1-r0nh2bi(a^#n(we6'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+    'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
-   # 'django.middleware.common.CommonMiddleware',
-   # 'django.contrib.sessions.middleware.SessionMiddleware',
-   # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
 ROOT_URLCONF = 'jobtest_Ruslan.urls'
+
+AUTH_PROFILE_MODULE = "mydata.mybio"
 
 TEMPLATE_DIRS = (os.path.join(DIRNAME, "templates"), )
 
 FIXTURE_DIRS = (os.path.join(DIRNAME, "fixtures"), )
 
+TEMPLATE_CONTEXT_PROCESSORS = ('django.core.context_processors.auth',)
 
 INSTALLED_APPS = (
- #   'django.contrib.auth',
- #   'django.contrib.contenttypes',
- #   'django.contrib.sessions',
- #   'django.contrib.sites',
+        'django.contrib.auth',
+        'django.contrib.admin',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.sites',
 	'jobtest_Ruslan.mydata',
+        'jobtest_Ruslan.books',
 )

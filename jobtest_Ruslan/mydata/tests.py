@@ -1,14 +1,7 @@
 from tddspry.django import DatabaseTestCase, HttpTestCase
 from django.contrib.auth.models import User
 from models import Mybio
-test_account = {"username":"baby",
-                "password":"77722255"}
-
-
-test_contact = {"bio": "I was born January 27, 1984, Aquarius, like music, mountain bike and snowboard...",
-                "first_name":"Ruslan",
-                "last_name":"Strazhnyk",
-                "contacts": "0632311999, Lviv"}
+from jobtest_Ruslan.test_settings import test_account, test_contact
 
 
 class TestFixture(DatabaseTestCase):

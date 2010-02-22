@@ -72,6 +72,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'jobtest_Ruslan.req_log.middleware.RequestLogMiddleware',
 )
 
 ROOT_URLCONF = 'jobtest_Ruslan.urls'
@@ -92,4 +93,5 @@ INSTALLED_APPS = (
         'django.contrib.sites',
 	'jobtest_Ruslan.mydata',
         'jobtest_Ruslan.books',
+        'jobtest_Ruslan.req_log',
 )

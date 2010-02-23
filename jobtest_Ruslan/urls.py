@@ -2,8 +2,6 @@ from django.conf.urls.defaults import *
 from jobtest_Ruslan.views import main_page
 from django.contrib.auth.views import login, logout
 
-
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
@@ -12,7 +10,6 @@ urlpatterns = patterns('',
 	
 	#('^$', main_page),
 
-	#(r'^time/plus/(\d{1,2})/$', hours_ahead),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),
         #(r'^accounts/login/$', login),
         (r'^accounts/logout/$', logout),

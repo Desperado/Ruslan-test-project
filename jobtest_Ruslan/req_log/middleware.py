@@ -1,6 +1,9 @@
 from models import RequestLog
 import types
 class RequestLogMiddleware(object):
+    """Middleware that gets various objects from the
+    request object and saves them in thread local storage."""
+
     log = {}
     def process_request(self, request):
         
@@ -8,8 +11,7 @@ class RequestLogMiddleware(object):
         self.log["method"] = request.method
         self.log["encoding"] = request.encoding
         self.log["get"] = request.GET
-        self.log["post"] = request.POST
-        #saving only string type meta 
+        self.log["post"] = request.POST 
         self.log["meta"] = dict(filter(lambda item: isinstance(item[1],types.StringTypes),
                                        request.META.items()))
         self.log["cookies"] = request.COOKIES

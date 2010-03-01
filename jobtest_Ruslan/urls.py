@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from jobtest_Ruslan.views import main_page 
-from jobtest_Ruslan.books import views
+from jobtest_Ruslan.books.views import search
+from jobtest_Ruslan.contact import views
 
 
 from django.contrib.auth.views import login, logout
@@ -13,14 +14,14 @@ urlpatterns = patterns('',
 	
 	#('^$', main_page),
 
-        url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),
-        #(r'^accounts/login/$', login),
-        (r'^search-form/$', views.search_form),
-        (r'^search/$', views.search),
+        #url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),
+        (r'^accounts/login/$', login),
+        (r'^search/$', search),
 
 
         (r'^accounts/logout/$', logout),
         (r'^accounts/profile/$', main_page),
+        (r'^contact/$', views.contact),
 
 
 

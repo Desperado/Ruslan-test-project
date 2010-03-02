@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
-from jobtest_Ruslan.views import main_page 
 from jobtest_Ruslan.books.views import search
+from jobtest_Ruslan.mydata.views import contact
 from jobtest_Ruslan.contact import views
 
 
@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 
 
         (r'^accounts/logout/$', logout),
-        (r'^accounts/profile/$', main_page),
+        (r'^accounts/profile/$', contact),
         (r'^contact/$', views.contact),
 
 

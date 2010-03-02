@@ -5,14 +5,16 @@
 </head>
 <body>
     <h1>My Bio</h1>
-    {% block content %}<p>First name: {{ data.first_name }}.</p>
-                       <p>Last name: {{ data.last_name }}.</p>
-                       <p>Bio: {{ data.bio }}.</p>
-                       <p>Contacts: {{ data.contacts }}.</p>{% endblock %}
-    {% block footer %}
+<form method="POST">
+	<table>
+	{{ profile_form.as_table }}
+	{{ contact_formset.management_form }}
+	</table>
+	<input type="submit" value="Submit">
+</form>
+{% block footer %}
     <hr>
     <p>Greetings for all visitors</p>
     {% endblock %}
 </body>
 </html>
-

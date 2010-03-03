@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext as _
+
 
 class Mybio(models.Model):
     first_name = models.CharField(max_length=30)
@@ -12,6 +14,8 @@ class Mybio(models.Model):
 class AuthRequest(models.Model):
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=40)
+
+
 
 
 

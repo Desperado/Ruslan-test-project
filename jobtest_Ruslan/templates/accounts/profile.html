@@ -5,6 +5,15 @@
 </head>
 <body>
     <h1>My Bio</h1>
+{% block extra_head %}
+{{ profile_form.media }}
+<script type="application/javascript">
+$(document).ready(function(){
+  $('.datepicker').attachDatepicker({ dateFormat: 'yy-mm-dd' });
+  });  
+</script>
+{% endblock %}
+
 <form method="POST">
 	<table>
 	{{ profile_form.as_table }}

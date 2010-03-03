@@ -1,6 +1,6 @@
 from django.core import management
 #from django.core.context_processors import csrf
-from mydata.forms import ProfileForm
+from mydata.forms import ProfileForm, DatePickerForm
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from mydata.models import Mybio

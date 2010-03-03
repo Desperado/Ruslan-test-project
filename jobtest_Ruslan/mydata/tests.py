@@ -25,3 +25,13 @@ class TestContactsViews(HttpTestCase):
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])
         self.find(test_contact["contacts"])
+
+    def test_calendar_widget_present(self):
+        """
+        Test if calendar widget is loaded
+        """
+        self.login(test_account["username"],
+                   test_account["password"], 'accounts/profile')  
+        self.find("/media/js/datetimepicker_css.js")
+        self.find("/media/css/rfnet.css")
+

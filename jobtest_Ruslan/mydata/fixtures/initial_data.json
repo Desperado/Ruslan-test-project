@@ -4,7 +4,9 @@
    "first_name": "Ruslan", 
    "last_name": "Strazhnyk", 
    "bio": "I was born January 27, 1984, Aquarius, like music, mountain bike and snowboard...",
-   "contacts": "0632311999, Lviv"}},
+   "contacts": "0632311999, Lviv",
+   "date_of_birth": "1984-01-27"}},
+
 {"pk": 2, 
    "model": "auth.user", 
    "fields": {
@@ -23,4 +25,7 @@
    }}
 
 ]
+
+
+
 

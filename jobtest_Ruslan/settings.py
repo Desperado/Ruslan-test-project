@@ -46,7 +46,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(DIRNAME, 'static')
+MEDIA_ROOT = os.path.join(DIRNAME, 'media')
 
 MAX_FILE_UPLOAD_SIZE = 524288#500K
 
@@ -98,6 +98,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
 INSTALLED_APPS = (
         'django.contrib.auth',
         'django.contrib.admin',
+        'django.contrib.admin.widgets',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.sites',

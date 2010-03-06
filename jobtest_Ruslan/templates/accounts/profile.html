@@ -5,6 +5,9 @@
 </head>
 <body>
     <h1>My Bio</h1>
+{% block css %} {% endblock css %}
+
+{% block media %} {{profile.media}} {% endblock media %}
 <form method="POST">
 	<table>
 	{{ profile_form.as_table }}

@@ -1,10 +1,21 @@
-#from models import Contact, BiographyEntry, Profile
+
 from mydata.models import Mybio
-from django.forms import ModelForm
+from django import forms
+from django.conf import settings
 from django.contrib.admin.options import TabularInline
+from django.contrib.admin import widgets
+from widgets import DateTimeWidget 
 
 
-class ProfileForm(ModelForm):
+class ProfileForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=100)
+    date_of_birth = forms.DateField(widget=DateTimeWidget)
+  
+
+    last_name = forms.CharField(max_length=100)
     class Meta:
         model = Mybio
-
+        widgets = {
+            'date_of_birth': DateTimeWidget(),
+        }
+ 

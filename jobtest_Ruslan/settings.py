@@ -1,14 +1,13 @@
 import os
 import logging
 
-
-DIRNAME = os.path.dirname(__file__)
-
-LOG_LOCATION = os.path.join(DIRNAME, "logs/django.log").replace("\\", "/")
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
+LOG_LOCATION = os.path.join(PROJECT_PATH, "logs/django.log").replace("\\", "/")
 logging.basicConfig(level = logging.DEBUG,
                     format = '%(asctime)s %(levelname)s %(message)s',
                     filename = LOG_LOCATION,
                     filemode = 'a')
+
 
 
 DEBUG = True
@@ -46,7 +45,12 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+#MEDIA_ROOT = os.path.join(DIRNAME, 'media')
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media').replace('\\', '/')
+
+
+MAX_FILE_UPLOAD_SIZE = 524288#500K
+
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -56,7 +60,9 @@ MEDIA_URL = ''
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/adminmedia/'
+MEDIA_PREFIX = '/media'
+
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'zelj#0!8duvg%9)6f2$!u9ep+(-&4)q=1-r0nh2bi(a^#n(we6'
@@ -79,9 +85,9 @@ ROOT_URLCONF = 'jobtest_Ruslan.urls'
 
 AUTH_PROFILE_MODULE = "mydata.mybio"
 
-TEMPLATE_DIRS = (os.path.join(DIRNAME, "templates"), )
+TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, "templates"), )
 
-FIXTURE_DIRS = (os.path.join(DIRNAME, "fixtures"), )
+FIXTURE_DIRS = (os.path.join(PROJECT_PATH, "fixtures"), )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",   
                               "django.core.context_processors.debug",
@@ -93,6 +99,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
 INSTALLED_APPS = (
         'django.contrib.auth',
         'django.contrib.admin',
+        'django.contrib.admin.widgets',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.sites',

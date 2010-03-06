@@ -42,3 +42,22 @@ class TestContactsViews(HttpTestCase):
         self.go('accounts/profile')
         self.find("/media/admin/img/icon_calendar.gif")
         
+
+class TestContactsForm(HttpTestCase):
+    def test_contact_edit_form(self):
+        '''
+        Test contact edit form
+        '''
+        self.login(test_account["username"],
+                 test_account["password"], '/accounts/login') 
+
+        self.fv("1", "bio", "Who was born January 27?")
+        self.fv("1", "first_name", "First Name")
+        self.fv("1", "last_name", "Last Name")
+        self.fv("1", "contacts", "0987717059, Lviv")
+        self.submit(1)
+        self.find("Who was born January 27?")
+        self.find("First Name")
+        self.find("Last Name")
+        self.find("0987717059, Lviv")
+

@@ -12,7 +12,7 @@ import datetime, time
 from django.utils.safestring import mark_safe
  
 # DATETIMEWIDGET
-calbtn = u'''<img src="%s/media/admin/img/admin/icon_calendar.gif" alt="calendar" id="%s_btn" style="cursor: pointer;" title="Select date" />
+calbtn = u'''<img src="%s/media/admin/img/icon_calendar.gif" alt="calendar" id="%s_btn" style="cursor: pointer;" title="Select date" />
 <script type="text/javascript">
 Calendar.setup({
 inputField : "%s",
@@ -26,15 +26,15 @@ class DateTimeWidget(forms.widgets.TextInput):
     class Media:
         css = {
             'all': (
-                '%s/css/jscal2.css'%settings.MEDIA_PREFIX,
-                '%s/css/border-radius.css'%settings.MEDIA_PREFIX,
-                '%s/css/win2k/win2k.css'%settings.MEDIA_PREFIX,
+                '%s/css/calendar/jscal2.css'%settings.MEDIA_PREFIX,
+                '%s/css/calendar/border-radius.css'%settings.MEDIA_PREFIX,
+                '%s/css/calendar/win2k/win2k.css'%settings.MEDIA_PREFIX,
                     )
         }
         js = (
               
              '%s/js/calendar/jscal2.js'%settings.MEDIA_PREFIX, 
-             '%s/js/calendar/lang/en.js'%settings.MEDIA_PREFIX, 
+             '%s/js/calendar/lang/ua.js'%settings.MEDIA_PREFIX, 
 
         )
  

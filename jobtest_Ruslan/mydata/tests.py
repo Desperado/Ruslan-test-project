@@ -12,8 +12,6 @@ class TestFixture(DatabaseTestCase):
         self.assert_count(Mybio, 1)
         self.assert_read(Mybio, **test_contact)
 
-
-
 class TestContactsViews(HttpTestCase):
     def test_contacts_view(self):
         """
@@ -30,8 +28,17 @@ class TestContactsViews(HttpTestCase):
         """
         Test if calendar widget is loaded
         """
-        self.login(test_account["username"],
-                   test_account["password"], 'accounts/profile')  
-        self.find("/media/js/datetimepicker_css.js")
-        self.find("/media/css/rfnet.css")
+        self.go('accounts/profile')  
+        self.find("/media/css/calendar/jscal2.css")
+        self.find("/media/css/calendar/border-radius.css")
+        self.find("/media/css/calendar/win2k/win2k.css")
+        self.find("/media/js/calendar/jscal2.js")
+        self.find("/media/js/calendar/lang/ua.js")
 
+    def test_calendar_logo_present(self):
+        """
+        Test if calendar logo is loaded
+        """
+        self.go('accounts/profile')
+        self.find("/media/admin/img/icon_calendar.gif")
+        

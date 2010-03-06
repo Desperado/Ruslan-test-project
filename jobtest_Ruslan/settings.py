@@ -1,14 +1,13 @@
 import os
 import logging
 
-
-DIRNAME = os.path.dirname(__file__)
-
-LOG_LOCATION = os.path.join(DIRNAME, "logs/django.log").replace("\\", "/")
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
+LOG_LOCATION = os.path.join(PROJECT_PATH, "logs/django.log").replace("\\", "/")
 logging.basicConfig(level = logging.DEBUG,
                     format = '%(asctime)s %(levelname)s %(message)s',
                     filename = LOG_LOCATION,
                     filemode = 'a')
+
 
 
 DEBUG = True
@@ -46,7 +45,9 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(DIRNAME, 'media')
+#MEDIA_ROOT = os.path.join(DIRNAME, 'media')
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media').replace('\\', '/')
+
 
 MAX_FILE_UPLOAD_SIZE = 524288#500K
 
@@ -84,9 +85,9 @@ ROOT_URLCONF = 'jobtest_Ruslan.urls'
 
 AUTH_PROFILE_MODULE = "mydata.mybio"
 
-TEMPLATE_DIRS = (os.path.join(DIRNAME, "templates"), )
+TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, "templates"), )
 
-FIXTURE_DIRS = (os.path.join(DIRNAME, "fixtures"), )
+FIXTURE_DIRS = (os.path.join(PROJECT_PATH, "fixtures"), )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",   
                               "django.core.context_processors.debug",

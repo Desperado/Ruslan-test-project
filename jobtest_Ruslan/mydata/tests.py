@@ -69,9 +69,9 @@ class TestContactsForm(HttpTestCase):
         '''
         Test if contact edit form could be reversed
         '''
-        from forms import ReversedForm
+        from forms import FormReverse
         
-        class TestFormReverse(ReversedForm):
+        class TestFormReverse(FormReverse):
             class Meta:
                 model = Profile
         reversed = TestFormReverse().fields.keys()

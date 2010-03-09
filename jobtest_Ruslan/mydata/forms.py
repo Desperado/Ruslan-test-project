@@ -18,5 +18,11 @@ class ProfileForm(forms.ModelForm):
         }
 
 class FormReverse(forms.ModelForm):
-    pass
+    def __init__(self, *args, **kwargs):
+        reverse = bool(kwargs.pop("reverse", False))
+        super(FormReverse, self).__init__(*args, **kwargs)
+        if reverse:
+            fields_list = self.fields.items()
+            fields_list.reverse()
+            self.fields = SortedDict(fields_list)
  

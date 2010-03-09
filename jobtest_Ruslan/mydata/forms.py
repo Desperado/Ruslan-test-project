@@ -16,5 +16,7 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'date_of_birth': DateTimeWidget(),
         }
-        #fields = ['last_name', 'first_name', 'date_of_birth', 'bio', 'contacts']
+
+class FormReverse(forms.ModelForm):
+    pass
  

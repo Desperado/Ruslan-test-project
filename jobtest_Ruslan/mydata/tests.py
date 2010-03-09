@@ -18,52 +18,62 @@ class TestContactsViews(HttpTestCase):
         Test if contact view contains all relevant data from fixture
         """
         self.login(test_account["username"],
-                  test_account["password"], 'accounts/profile')   
-        self.go('accounts/profile')
+                  test_account["password"], 'accounts/login/?next=/accounts/profile/')   
         self.find(test_contact["bio"])
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])
         self.find(test_contact["contacts"])
-        pass
+        self.go('accounts/logout')
 
     def test_calendar_widget_present(self):
         """
         Test if calendar widget is loaded
         """
-        #self.login(test_account["username"], test_account["password"],  url=reverse("auth") + "?next=" + reverse("profile", kwargs=TEST_PROFILE))
-        #self.go('accounts/profile')  
-        #self.find("/media/css/calendar/jscal2.css")
-        #self.find("/media/css/calendar/border-radius.css")
-        #self.find("/media/css/calendar/win2k/win2k.css")
-        #self.find("/media/js/calendar/jscal2.js")
-        #self.find("/media/js/calendar/lang/ua.js")
-        pass
+        self.login(test_account["username"],
+                  test_account["password"], 'accounts/login/?next=/accounts/profile/')
+        self.find("/media/css/calendar/jscal2.css")
+        self.find("/media/css/calendar/border-radius.css")
+        self.find("/media/css/calendar/win2k/win2k.css")
+        self.find("/media/js/calendar/jscal2.js")
+        self.find("/media/js/calendar/lang/ua.js")
+        self.go('accounts/logout')
+
 
     def test_calendar_logo_present(self):
         """
         Test if calendar logo is loaded
         """
-        #self.login(test_account["username"],          test_account["password"], '/accounts/login')         
-        #self.go('accounts/profile')
-        #self.find("/media/admin/img/icon_calendar.gif")
-        #pass
+        self.login(test_account["username"],
+                  test_account["password"], 'accounts/login/?next=/accounts/profile/')      
         
+        self.find("/media/admin/img/icon_calendar.gif")
 
 class TestContactsForm(HttpTestCase):
     def test_contact_edit_form(self):
         '''
         Test contact edit form
         '''
-        #self.login(test_account["username"],
-               #  test_account["password"], '/accounts/login') 
-        #self.go('accounts/profile')  
-        #self.fv("1", "bio", "Who was born January 27?")
-        #self.fv("1", "first_name", "First Name")
-        #self.fv("1", "last_name", "Last Name")
-        #self.fv("1", "contacts", "0987717059, Lviv")
-        #self.submit(1)
-        #self.find("Who was born January 27?")
-        #self.find("First Name")
-        #self.find("Last Name")
-        #self.find("0987717059, Lviv")
-        pass
+        self.login(test_account["username"],
+                  test_account["password"], 'accounts/login/?next=/accounts/profile/')  
+        self.fv("1", "bio", "Who was born January 27?")
+        self.fv("1", "first_name", "First Name")
+        self.fv("1", "last_name", "Last Name")
+        self.fv("1", "contacts", "0987717059, Lviv")
+        self.submit(1)
+        self.find("Who was born January 27?")
+        self.find("First Name")
+        self.find("Last Name")
+        self.find("0987717059, Lviv")
+        
+    def test_contact_reverse_edit_form(self):
+        '''
+        Test if contact edit form could be reversed
+        '''
+        from forms import ReversedForm
+        
+        class TestFormReverse(ReversedForm):
+            class Meta:
+                model = Profile
+        reversed = TestFormReverse().fields.keys()
+        reversed.reverse()
+        self.ok_(TestFormReverse(reverse = True).fields.keys() == reversed)

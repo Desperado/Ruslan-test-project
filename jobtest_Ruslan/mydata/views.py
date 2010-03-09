@@ -1,9 +1,8 @@
 from django.core import management
-from mydata.forms import ProfileForm
+from forms import ProfileForm
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from mydata.models import Mybio
-from django.forms.models import inlineformset_factory
+from models import Mybio
 
 
 @login_required

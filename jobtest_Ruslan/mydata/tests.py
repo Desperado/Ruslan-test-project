@@ -77,3 +77,15 @@ class TestContactsForm(HttpTestCase):
         reversed = TestFormReverse().fields.keys()
         reversed.reverse()
         self.ok_(TestFormReverse(reverse = True).fields.keys() == reversed)
+
+class TestTemplatetags(HttpTestCase):
+    def test_edit_list_tag(self):
+        '''
+        Test 'edit_list' tag
+        '''
+        from django.template import Context, Template
+        template = Template("{% load admin_urls %}{% edit_list profile %}")
+        c = Context({"profile":Mybio.objects.get(id=1)})
+        rendered = template.render(c)
+        self.ok_(rendered.find("/admin/mydata/mybio/1") >= 0)
+

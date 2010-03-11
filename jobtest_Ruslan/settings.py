@@ -106,4 +106,5 @@ INSTALLED_APPS = (
 	'jobtest_Ruslan.mydata',
         'jobtest_Ruslan.books',
         'jobtest_Ruslan.req_log',
+        'jobtest_Ruslan.templatetags',
 )

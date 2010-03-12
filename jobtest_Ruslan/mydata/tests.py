@@ -89,3 +89,24 @@ class TestTemplatetags(HttpTestCase):
         rendered = template.render(c)
         self.ok_(rendered.find("/admin/mydata/mybio/1") >= 0)
 
+
+class TestCommands(DatabaseTestCase):
+    def test_models_stat_command(self):
+        '''
+        Test if command 'model_stats' outputs models statistics
+        '''
+        import sys
+        from django.core.management import call_command        
+        from StringIO import StringIO
+        real_stdout = sys.stdout
+        try:
+            sys.stdout = StringIO()
+            call_command("model_stats")
+            sys.stdout.pos = 0
+            buf = "\n".join(sys.stdout.readlines())
+            self.ok_(buf.find("mydata.mybio") >= 0,
+                     "Model 'Mybio' not found in command output")
+        finally:
+            sys.stdout = real_stdout
+
+

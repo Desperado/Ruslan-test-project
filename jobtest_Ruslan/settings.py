@@ -10,7 +10,7 @@ logging.basicConfig(level = logging.DEBUG,
 
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -106,5 +106,5 @@ INSTALLED_APPS = (
 	'jobtest_Ruslan.mydata',
         'jobtest_Ruslan.books',
         'jobtest_Ruslan.req_log',
-        'jobtest_Ruslan.templatetags',
+        'jobtest_Ruslan.crud_logger',
 )

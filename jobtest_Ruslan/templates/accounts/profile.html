@@ -7,10 +7,43 @@
     <h1>My Bio</h1>
 {% block css %} {% endblock css %}
 
-{% block media %} {{profile.media}} {% endblock media %}
+{% block media %} {{profile.media}}
 
+<script type="text/javascript" src="/media/js/jquery.form.js"></script>
+<script type="application/javascript">
+  $('#ajaxform').ajaxForm({
+  target: "#ajaxform",
+  beforeSubmit: function(){
+			$("#ajaxform input").attr("disabled","1");
+  			$("#ajaxform select").attr("disabled","1");
+			$("#ajaxform textarea").attr("disabled","1");
+			}, 
+  success:   function(){
+			$("#ajaxform input").enable();
+			$("#ajaxform select").enable();
+             		$("#ajaxform textarea").enable();
+			},
+  });  
+  $('#ajaxlog').ajaxStart(function() {
+			$(this).append('<hr/><div>Form send started.</div>');
+			});
+  $('#ajaxlog').ajaxError(function() {
+			$(this).append('<div>Form sending error.</div>');
+			});
+  $('#ajaxlog').ajaxSend(function() {
+			$(this).append('<div>Sending form</div>');
+			});
+  $('#ajaxlog').ajaxSuccess(function() {
+			$(this).append('<div>Success.</div>');
+			});
+  $('#ajaxlog').ajaxComplete(function() {
+        		$(this).append('<div>Form send completed.</div>');
+			});
+  });	
+</script>
+{% endblock media %}
+<form class = "ajax_form" method="POST">
 
-<form method="POST">
 	<table>
 	{{ profile_form.as_table }}
 	{{ contact_formset.management_form }}
@@ -22,4 +55,6 @@
     <p>Greetings for all visitors</p>
     {% endblock %}
 </body>
+<div id = "ajaxlog"></div>
+
 </html>

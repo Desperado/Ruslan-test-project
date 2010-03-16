@@ -2,6 +2,10 @@ import os
 import logging
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
+
+if not os.path.exists(os.path.join(PROJECT‏_PATH,"logs")):
+        os.mkdir(os.path.join(PROJECT‏_PATH,"logs"))
+
 LOG_LOCATION = os.path.join(PROJECT_PATH, "logs/django.log").replace("\\", "/")
 logging.basicConfig(level = logging.DEBUG,
                     format = '%(asctime)s %(levelname)s %(message)s',
@@ -10,7 +14,7 @@ logging.basicConfig(level = logging.DEBUG,
 
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

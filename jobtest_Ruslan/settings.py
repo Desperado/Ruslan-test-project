@@ -1,10 +1,13 @@
+#!/usr/bin/python
+# -*- coding: UTF8 -*-
+
 import os
 import logging
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
 
-if not os.path.exists(os.path.join(PROJECT‏_PATH,"logs")):
-        os.mkdir(os.path.join(PROJECT‏_PATH,"logs"))
+if not os.path.exists(os.path.join(PROJECT_PATH,"logs")):
+        os.mkdir(os.path.join(PROJECT_PATH,"logs"))
 
 LOG_LOCATION = os.path.join(PROJECT_PATH, "logs/django.log").replace("\\", "/")
 logging.basicConfig(level = logging.DEBUG,

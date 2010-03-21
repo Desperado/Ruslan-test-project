@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from jobtest_Ruslan.books.views import search
 from jobtest_Ruslan.mydata.views import contact
 from jobtest_Ruslan.contact import views
 from django.conf import settings
@@ -14,9 +13,7 @@ urlpatterns = patterns('',
 	
 	
 	#('^$', main_page),
-
         url(r'^accounts/login/$', 'django.contrib.auth.views.login', name="auth"),
-        (r'^search/$', search),
         (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/accounts/login/'}),
         (r'^accounts/profile/$', contact),
         (r'^contact/$', views.contact),

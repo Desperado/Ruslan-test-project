@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# utils/widgets.py
+# widgets.py
  
 '''
 DateTimeWidget using JSCal2 from http://www.dynarch.com/projects/calendar/
@@ -35,7 +35,6 @@ class DateTimeWidget(forms.widgets.TextInput):
               
              '%s/js/calendar/jscal2.js'%settings.MEDIA_PREFIX, 
              '%s/js/calendar/lang/ua.js'%settings.MEDIA_PREFIX, 
-
         )
  
     dformat = '%Y-%m-%d'

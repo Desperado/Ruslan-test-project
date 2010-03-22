@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# mydata/forms.py
+""" Mydata forms page """
+
 from models import Mybio
 from django import forms
 from widgets import DateTimeWidget 

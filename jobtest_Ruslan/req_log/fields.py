@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# req_log/fields.py
+""" Request log fields """
+
 from django.conf import settings
 from django.db import models
 

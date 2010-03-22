@@ -1,5 +1,6 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
-# widgets.py
+# mydata/widgets.py
  
 '''
 DateTimeWidget using JSCal2 from http://www.dynarch.com/projects/calendar/

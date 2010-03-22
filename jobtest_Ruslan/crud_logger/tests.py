@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# crud_logger/tests.py
+""" CRUD logger tests """
+
 from datetime import date
 from tddspry.django import DatabaseTestCase
 from jobtest_Ruslan.mydata.models import Mybio

@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# context_proc/tests.py
+""" Context processor tests """
 from tddspry.django import HttpTestCase
 
 from django.template.context import RequestContext

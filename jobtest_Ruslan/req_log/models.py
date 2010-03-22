@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# req_log/models.py
+""" Reqest log models """
+
 from django.db import models
 from fields import PickleField
 class RequestLog(models.Model):

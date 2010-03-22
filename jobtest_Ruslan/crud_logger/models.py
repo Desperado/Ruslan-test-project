@@ -1,3 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# crud_logger/models.py
+""" CRUD logger models """
+
 from django.db import models
 from django.utils.translation import ugettext as _
  
@@ -23,6 +28,7 @@ class CRUDlogger(models.Model):
     
  
 def log_save(sender, *args, **kwargs):
+    """Save or update logs"""
     if sender == CRUDlogger:
         return
     logdict = {"app_label":sender._meta.app_label,
@@ -34,6 +40,7 @@ def log_save(sender, *args, **kwargs):
     
     CRUDlogger.objects.create(**logdict)
 def log_delete(sender, *args, **kwargs):
+    """Delete logs"""
     if sender == CRUDlogger:
         return
     CRUDlogger.objects.create(app_label=sender._meta.app_label,

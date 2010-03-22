@@ -1,4 +1,8 @@
-from django.core import management
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# mydata/views.py
+""" Mydata views page """
+
 from forms import ProfileForm
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required

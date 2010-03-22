@@ -1,10 +1,13 @@
+#!/usr/bin/python
+# -*- coding: UTF8 -*-
+
 import os
 import logging
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
 
-if not os.path.exists(os.path.join(PROJECT‏_PATH,"logs")):
-        os.mkdir(os.path.join(PROJECT‏_PATH,"logs"))
+if not os.path.exists(os.path.join(PROJECT_PATH,"logs")):
+    os.mkdir(os.path.join(PROJECT_PATH,"logs"))
 
 LOG_LOCATION = os.path.join(PROJECT_PATH, "logs/django.log").replace("\\", "/")
 logging.basicConfig(level = logging.DEBUG,
@@ -14,7 +17,7 @@ logging.basicConfig(level = logging.DEBUG,
 
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -23,8 +26,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'mydb.db'             # Or path to database file if using sqlite3.
+DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'mydb.db'      # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -49,7 +52,6 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-#MEDIA_ROOT = os.path.join(DIRNAME, 'media')
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media').replace('\\', '/')
 
 
@@ -108,7 +110,6 @@ INSTALLED_APPS = (
         'django.contrib.sessions',
         'django.contrib.sites',
 	'jobtest_Ruslan.mydata',
-        'jobtest_Ruslan.books',
         'jobtest_Ruslan.req_log',
         'jobtest_Ruslan.crud_logger',
 )

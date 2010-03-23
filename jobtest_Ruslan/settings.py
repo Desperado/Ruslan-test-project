@@ -17,7 +17,7 @@ logging.basicConfig(level = logging.DEBUG,
 
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

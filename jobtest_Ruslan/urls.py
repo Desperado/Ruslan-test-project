@@ -12,9 +12,9 @@ urlpatterns = patterns('',
 	
 	#('^$', main_page),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login',\
-                                                         name="auth"),
+                 {'template_name': 'registration/login.html'}, name="auth", ),
         (r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
-                                    {'next_page': '/accounts/login/'}),
+                 {'template_name': 'registration/logout.html'}),
         (r'^accounts/profile/$', contact),
         (r'^admin/doc/', include('django.contrib.admindocs.urls')),
         (r'^admin/', include(admin.site.urls)),

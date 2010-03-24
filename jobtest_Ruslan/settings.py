@@ -1,10 +1,11 @@
 #!/usr/bin/python
 # -*- coding: UTF8 -*-
 
-import os
+import os, sys
 import logging
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
+sys.path.insert(0, os.path.join(PROJECT_PATH, 'lib'))
 
 if not os.path.exists(os.path.join(PROJECT_PATH,"logs")):
     os.mkdir(os.path.join(PROJECT_PATH,"logs"))
@@ -17,7 +18,7 @@ logging.basicConfig(level = logging.DEBUG,
 
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -103,6 +104,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
 )        
 
 INSTALLED_APPS = (
+        'django.contrib.admindocs',
         'django.contrib.auth',
         'django.contrib.admin',
         'django.contrib.admin.widgets',

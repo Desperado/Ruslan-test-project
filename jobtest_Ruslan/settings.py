@@ -17,7 +17,7 @@ logging.basicConfig(level = logging.DEBUG,
 
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -103,6 +103,7 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
 )        
 
 INSTALLED_APPS = (
+        'django.contrib.admindocs',
         'django.contrib.auth',
         'django.contrib.admin',
         'django.contrib.admin.widgets',

@@ -7,7 +7,40 @@
     <h1>My Bio</h1>
 {% block css %} {% endblock css %}
 
-{% block media %} {{profile.media}}
+{% block media %} {{profile_form.media}}
+<style type="text/css">
+<!--
+label {display: block;}
+p {margin: 0 0 1.5em 0;}
+.errorlist {color: red; margin: 1.5em 0 0 0; padding: 0; list-style: none;}
+-->
+</style>
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+    $("input.dateField").each(function(){
+        obj = $(this)
+        obj.DatePicker({
+            date: obj.val(),
+            position: 'bottom',
+            onBeforeShow: function(){
+                obj.DatePickerSetDate(obj.val(), true);
+            },
+            onChange: function(formated, dates){
+                obj.val(formated);
+            }
+        });
+    });
+});
+
+//-->
+</script>
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+	</script>
 
 <script type="application/javascript">
   $('#ajaxform').ajaxForm({

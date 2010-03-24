@@ -5,8 +5,10 @@
 
 from models import Mybio
 from django import forms
-from widgets import DateTimeWidget 
+from widgets import DateTimeWidget
+from django.conf import settings 
 from django.utils.datastructures import SortedDict
+
 
 class ProfileForm(forms.ModelForm):
     """Profile form"""

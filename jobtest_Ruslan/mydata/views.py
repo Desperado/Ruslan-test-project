@@ -16,19 +16,17 @@ def contact(request):
     @param request:
     '''
 
-    profile = get_object_or_404(Mybio, 
+    profile = get_object_or_404(Mybio,
                                 first_name='Ruslan', )
-                               
+
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, instance=profile)
         if profile_form.is_valid():
             profile = profile_form.save()
-            
+
     if request.method == "GET":
         profile_form = ProfileForm(instance=profile)
 
-    
     return render_to_response("accounts/profile.html", {
                            "profile_form": profile_form,
                            })
-

@@ -8,9 +8,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	
-	
-	#('^$', main_page),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login',\
                  {'template_name': 'registration/login.html'}, name="auth", ),
         (r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
@@ -27,4 +24,3 @@ if settings.DEBUG:
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
 
 )
-

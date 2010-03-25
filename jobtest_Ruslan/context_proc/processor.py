@@ -8,4 +8,4 @@ def cont_settings(request):
     Get context settings from settings file
     """
     
-    return {"settings":settings}
+    return {"settings": settings}

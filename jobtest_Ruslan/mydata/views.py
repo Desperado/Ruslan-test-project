@@ -16,8 +16,7 @@ def contact(request):
     @param request:
     '''
 
-    profile = get_object_or_404(Mybio,
-                                first_name='Ruslan', )
+    profile = get_object_or_404(Mybio, )
 
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, instance=profile)

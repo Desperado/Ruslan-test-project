@@ -14,5 +14,4 @@ class TestRequestLog(DatabaseTestCase, HttpTestCase):
         self.go("/something")
         self.go("/nonsence_url")
 
-        self.assert_count(RequestLog,2)        
-
+        self.assert_count(RequestLog, 2)

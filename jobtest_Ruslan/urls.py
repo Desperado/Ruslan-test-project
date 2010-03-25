@@ -5,19 +5,24 @@ from django.conf.urls.defaults import *
 from mydata.views import contact
 from django.conf import settings
 from django.contrib import admin
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
 admin.autodiscover()
 
+def index(request):
+    return HttpResponseRedirect(reverse("profile-view",
+                                        kwargs={"first_name":"Ruslan",
+                                                "last_name":"Strazhnyk"}))
+
 urlpatterns = patterns('',
-	
-	
-	#('^$', main_page),
+        url(r'^$', contact, ),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login',\
                  {'template_name': 'registration/login.html'}, name="auth", ),
-        (r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
+        url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
                  {'template_name': 'registration/logout.html'}),
-        (r'^accounts/profile/$', contact),
-        (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-        (r'^admin/', include(admin.site.urls)),
+        url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+        url(r'^admin/', include(admin.site.urls)),
 
 )
 
@@ -27,4 +32,3 @@ if settings.DEBUG:
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
 
 )
-

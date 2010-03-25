@@ -37,53 +37,53 @@ $(document).ready(function(){
 //-->
 </script>
 <script type="text/javascript">
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-	</script>
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+    </script>
 
 <script type="application/javascript">
   $('#ajaxform').ajaxForm({
   target: "#ajaxform",
   beforeSubmit: function(){
-			$("#ajaxform input").attr("disabled","1");
-  			$("#ajaxform select").attr("disabled","1");
-			$("#ajaxform textarea").attr("disabled","1");
-			}, 
+            $("#ajaxform input").attr("disabled","1");
+            $("#ajaxform select").attr("disabled","1");
+            $("#ajaxform textarea").attr("disabled","1");
+            }, 
   success:   function(){
-			$("#ajaxform input").enable();
-			$("#ajaxform select").enable();
-             		$("#ajaxform textarea").enable();
-			},
+            $("#ajaxform input").enable();
+            $("#ajaxform select").enable();
+                   $("#ajaxform textarea").enable();
+            },
   });  
   $('#ajaxlog').ajaxStart(function() {
-			$(this).append('<hr/><div>Form send started.</div>');
-			});
+            $(this).append('<hr/><div>Form send started.</div>');
+            });
   $('#ajaxlog').ajaxError(function() {
-			$(this).append('<div>Form sending error.</div>');
-			});
+            $(this).append('<div>Form sending error.</div>');
+            });
   $('#ajaxlog').ajaxSend(function() {
-			$(this).append('<div>Sending form</div>');
-			});
+            $(this).append('<div>Sending form</div>');
+            });
   $('#ajaxlog').ajaxSuccess(function() {
-			$(this).append('<div>Success.</div>');
-			});
+            $(this).append('<div>Success.</div>');
+            });
   $('#ajaxlog').ajaxComplete(function() {
-        		$(this).append('<div>Form send completed.</div>');
-			});
-  });	
+                $(this).append('<div>Form send completed.</div>');
+            });
+  });
 </script>
 {% endblock media %}
 <form class = "ajax_form" method="POST">
 
-	<table>
-	{{ profile_form.as_table }}
-	{{ contact_formset.management_form }}
-	</table>
-	<input type="submit" value="Submit">
+    <table>
+    {{ profile_form.as_table }}
+    {{ contact_formset.management_form }}
+    </table>
+    <input type="submit" value="Submit">
 </form>
 
-<a href="/accounts/logout">Logout</a>
+<h4><a href="/accounts/logout">Logout</a></h4>
 {% block footer %}
     <hr>
     <p>Greetings for all visitors</p>

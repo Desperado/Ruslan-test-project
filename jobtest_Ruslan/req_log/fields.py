@@ -11,6 +11,7 @@ if getattr(settings, 'USE_CPICKLE', False):
 else:
     import pickle
 
+
 class PickleField(models.TextField):
     __metaclass__ = models.SubfieldBase
 
@@ -42,4 +43,3 @@ class PickleField(models.TextField):
             # If pickle could not load from string it means that it's Python
             # string saved to PickleField.
             return value
-

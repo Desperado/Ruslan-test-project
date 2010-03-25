@@ -6,7 +6,7 @@
 from models import Mybio
 from django import forms
 from widgets import DateTimeWidget
-from django.conf import settings 
+from django.conf import settings
 from django.utils.datastructures import SortedDict
 
 
@@ -15,11 +15,13 @@ class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100)
     date_of_birth = forms.DateField(widget=DateTimeWidget)
     last_name = forms.CharField(max_length=100)
+
     class Meta:
         model = Mybio
         widgets = {
             'date_of_birth': DateTimeWidget(),
         }
+
 
 class FormReverse(forms.ModelForm):
     """Reversed form"""
@@ -30,4 +32,3 @@ class FormReverse(forms.ModelForm):
             fields_list = self.fields.items()
             fields_list.reverse()
             self.fields = SortedDict(fields_list)
- 

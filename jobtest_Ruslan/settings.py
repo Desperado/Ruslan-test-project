@@ -1,22 +1,21 @@
 #!/usr/bin/python
 # -*- coding: UTF8 -*-
 
-import os, sys
+import os
+import sys
 import logging
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__)).replace('\\', '/')
 sys.path.insert(0, os.path.join(PROJECT_PATH, 'lib'))
 
-if not os.path.exists(os.path.join(PROJECT_PATH,"logs")):
-    os.mkdir(os.path.join(PROJECT_PATH,"logs"))
+if not os.path.exists(os.path.join(PROJECT_PATH, "logs")):
+    os.mkdir(os.path.join(PROJECT_PATH, "logs"))
 
 LOG_LOCATION = os.path.join(PROJECT_PATH, "logs/django.log").replace("\\", "/")
-logging.basicConfig(level = logging.DEBUG,
-                    format = '%(asctime)s %(levelname)s %(message)s',
-                    filename = LOG_LOCATION,
-                    filemode = 'a')
-
-
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    filename=LOG_LOCATION,
+                    filemode='a')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -27,12 +26,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql'..
 DATABASE_NAME = 'mydb.db'      # Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_HOST = ''             # Set to empty string for localhost.
+DATABASE_PORT = ''             # Set to empty string for default.
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -56,7 +55,7 @@ USE_I18N = True
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media').replace('\\', '/')
 
 
-MAX_FILE_UPLOAD_SIZE = 524288#500K
+MAX_FILE_UPLOAD_SIZE = 524288
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -96,12 +95,12 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, "templates"), )
 
 FIXTURE_DIRS = (os.path.join(PROJECT_PATH, "fixtures"), )
 
-TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",   
+TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
                               "django.core.context_processors.debug",
                               "django.core.context_processors.i18n",
                               "django.core.context_processors.media",
-                              "jobtest_Ruslan.context_proc.processor.cont_settings",      
-)        
+               "jobtest_Ruslan.context_proc.processor.cont_settings",
+)
 
 INSTALLED_APPS = (
         'django.contrib.admindocs',
@@ -111,7 +110,7 @@ INSTALLED_APPS = (
         'django.contrib.contenttypes',
         'django.contrib.sessions',
         'django.contrib.sites',
-	'jobtest_Ruslan.mydata',
+        'jobtest_Ruslan.mydata',
         'jobtest_Ruslan.req_log',
         'jobtest_Ruslan.crud_logger',
 )

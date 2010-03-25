@@ -17,6 +17,7 @@ class TestFixture(DatabaseTestCase):
         self.assert_count(Mybio, 1)
         self.assert_read(Mybio, **test_contact)
 
+
 class TestContactsViews(HttpTestCase):
     """Methods for testing contacts views"""
     def test_contacts_view(self):
@@ -25,7 +26,7 @@ class TestContactsViews(HttpTestCase):
         """
         self.login(test_account["username"],
                   test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')   
+                        'accounts/login/?next=/accounts/profile/')
         self.find(test_contact["bio"])
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])
@@ -46,16 +47,16 @@ class TestContactsViews(HttpTestCase):
         self.find("/media/js/calendar/lang/ua.js")
         self.go('accounts/logout')
 
-
     def test_calendar_logo_present(self):
         """
         Test if calendar logo is loaded
         """
         self.login(test_account["username"],
                   test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')      
-        
+                        'accounts/login/?next=/accounts/profile/')
+
         self.find("/media/admin/img/icon_calendar.gif")
+
 
 class TestContactsForm(HttpTestCase):
     """Methods for testing contacts form"""
@@ -65,7 +66,7 @@ class TestContactsForm(HttpTestCase):
         '''
         self.login(test_account["username"],
                   test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')  
+                        'accounts/login/?next=/accounts/profile/')
         self.fv("1", "bio", "Who was born January 27?")
         self.fv("1", "first_name", "First Name")
         self.fv("1", "last_name", "Last Name")
@@ -75,19 +76,20 @@ class TestContactsForm(HttpTestCase):
         self.find("First Name")
         self.find("Last Name")
         self.find("0987717059, Lviv")
-        
+
     def test_contact_reverse_edit_form(self):
         '''
         Test if contact edit form could be reversed
         '''
         from mydata.forms import FormReverse
-        
+
         class TestFormReverse(FormReverse):
             class Meta:
                 model = Mybio
         reverse = TestFormReverse().fields.keys()
         reverse.reverse()
-        self.ok_(TestFormReverse(reverse = True).fields.keys() == reverse)
+        self.ok_(TestFormReverse(reverse=True).fields.keys() == reverse)
+
 
 class TestTemplatetags(HttpTestCase):
     """Methods for testing template tags"""
@@ -97,7 +99,7 @@ class TestTemplatetags(HttpTestCase):
         '''
         from django.template import Context, Template
         template = Template("{% load admin_urls %}{% edit_list profile %}")
-        context = Context({"profile":Mybio.objects.get(id=1)})
+        context = Context({"profile": Mybio.objects.get(id=1)})
         rendered = template.render(context)
         self.ok_(rendered.find("/admin/mydata/mybio/1") >= 0)
 
@@ -109,7 +111,7 @@ class TestCommands(DatabaseTestCase):
         Test if command 'model_stats' outputs models statistics
         '''
         import sys
-        from django.core.management import call_command        
+        from django.core.management import call_command
         from StringIO import StringIO
         real_stdout = sys.stdout
         try:
@@ -121,5 +123,3 @@ class TestCommands(DatabaseTestCase):
                      "Model 'Mybio' not found in command output")
         finally:
             sys.stdout = real_stdout
-
-

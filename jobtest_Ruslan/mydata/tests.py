@@ -5,7 +5,7 @@
 
 from tddspry.django import DatabaseTestCase, HttpTestCase
 from models import Mybio
-from jobtest_Ruslan.test_settings import test_account, test_contact
+from jobtest_Ruslan.test_data import test_account, test_contact
 
 
 class TestFixture(DatabaseTestCase):
@@ -26,7 +26,7 @@ class TestContactsViews(HttpTestCase):
         """
         self.login(test_account["username"],
                   test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')
+                        'accounts/login/?next=/')
         self.find(test_contact["bio"])
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])
@@ -39,23 +39,11 @@ class TestContactsViews(HttpTestCase):
         """
         self.login(test_account["username"],
                   test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')
-        self.find("/media/css/calendar/jscal2.css")
-        self.find("/media/css/calendar/border-radius.css")
+                        'accounts/login/?next=/')
+        self.find("/media/js/jquery-1.4.2.min.js")
+        self.find("/media/datepicker/datepicker.js")
         self.find("/media/css/calendar/win2k/win2k.css")
-        self.find("/media/js/calendar/jscal2.js")
-        self.find("/media/js/calendar/lang/ua.js")
         self.go('accounts/logout')
-
-    def test_calendar_logo_present(self):
-        """
-        Test if calendar logo is loaded
-        """
-        self.login(test_account["username"],
-                  test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')
-
-        self.find("/media/admin/img/icon_calendar.gif")
 
 
 class TestContactsForm(HttpTestCase):
@@ -66,7 +54,7 @@ class TestContactsForm(HttpTestCase):
         '''
         self.login(test_account["username"],
                   test_account["password"], \
-                        'accounts/login/?next=/accounts/profile/')
+                        'accounts/login/?next=/')
         self.fv("1", "bio", "Who was born January 27?")
         self.fv("1", "first_name", "First Name")
         self.fv("1", "last_name", "Last Name")

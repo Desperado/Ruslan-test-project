@@ -10,15 +10,12 @@ from django.core.urlresolvers import reverse
 
 admin.autodiscover()
 
-def index(request):
-    return HttpResponseRedirect(reverse("profile-view",
-                                        kwargs={"first_name":"Ruslan",
-                                                "last_name":"Strazhnyk"}))
 
 urlpatterns = patterns('',
         url(r'^$', contact, ),
+        url(r'^accounts/profile/$', contact, ),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login',\
-                 {'template_name': 'registration/login.html'}, name="auth", ),
+           {'template_name': 'registration/login.html'}, name="auth", ),
         url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
                  {'template_name': 'registration/logout.html'}),
         url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

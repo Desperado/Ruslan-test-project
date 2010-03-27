@@ -1,0 +1,11 @@
+*.pyc
+*.*~
+*~
+database.sqlite
+local_settings.py
+lib/
+logs/
+uploads/
+project
+.pydevproject
+mydb.db

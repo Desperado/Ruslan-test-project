@@ -15,7 +15,7 @@ urlpatterns = patterns('',
         url(r'^$', contact, ),
         url(r'^accounts/profile/$', contact, ),
         url(r'^accounts/login/$', 'django.contrib.auth.views.login',\
-                 {'template_name': 'registration/login.html'}, name="auth", ),
+           {'template_name': 'registration/login.html'}, name="auth", ),
         url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
                  {'template_name': 'registration/logout.html'}),
         url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

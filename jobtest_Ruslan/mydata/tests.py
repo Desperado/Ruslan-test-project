@@ -42,7 +42,7 @@ class TestContactsViews(HttpTestCase):
                         'accounts/login/?next=/')
         self.find("/media/js/jquery-1.4.2.min.js")
         self.find("/media/datepicker/datepicker.js")
-        self.find("/media/css/calendar/win2k/win2k.css")
+        self.find("/media/datepicker/css/datepicker.css")
         self.go('accounts/logout')
 
 
@@ -59,7 +59,7 @@ class TestContactsForm(HttpTestCase):
         self.fv("1", "first_name", "First Name")
         self.fv("1", "last_name", "Last Name")
         self.fv("1", "contacts", "0987717059, Lviv")
-        self.submit(1)
+        self.submit()
         self.find("Who was born January 27?")
         self.find("First Name")
         self.find("Last Name")
@@ -69,7 +69,7 @@ class TestContactsForm(HttpTestCase):
         '''
         Test if contact edit form could be reversed
         '''
-        from mydata.forms import FormReverse
+        from forms import FormReverse
 
         class TestFormReverse(FormReverse):
             class Meta:

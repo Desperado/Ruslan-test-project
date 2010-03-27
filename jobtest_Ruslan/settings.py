@@ -109,7 +109,6 @@ INSTALLED_APPS = (
         'django.contrib.admin.widgets',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
-        'django.contrib.sites',
         'jobtest_Ruslan.mydata',
         'jobtest_Ruslan.req_log',
         'jobtest_Ruslan.crud_logger',

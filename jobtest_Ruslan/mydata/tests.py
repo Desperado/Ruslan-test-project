@@ -6,12 +6,20 @@
 from tddspry.django import DatabaseTestCase, HttpTestCase
 from django.core.urlresolvers import reverse
 from models import Mybio
+from django.contrib.auth.models import User
 from jobtest_Ruslan.test_data import test_account, test_contact, test_profile
 
 
 
 class TestFixture(DatabaseTestCase):
     """Methods for testing fixture"""
+    def test_admin_user_login(self):
+        '''
+        Test admin password and login restored from fixture
+        '''
+        admin = User.objects.get(username=test_account["username"])
+        self.ok_(admin.check_password(test_account["password"]))
+
     def test_my_contact_exists(self):
         """
         Test if data is uploaded from fixture
@@ -22,6 +30,13 @@ class TestFixture(DatabaseTestCase):
 
 class TestContactsViews(HttpTestCase):
     """Methods for testing contacts views"""
+    def test_login_required(self):
+        '''
+        Test if login required on contacts page
+        '''
+        self.go(reverse("profile-edit", kwargs=test_profile))
+        self.find("Login required")
+
     def test_contacts_view(self):
         """
         Test if contact view contains all relevant data from fixture

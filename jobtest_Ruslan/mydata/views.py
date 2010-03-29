@@ -51,7 +51,7 @@ def contact_edit(request, first_name, last_name):
             "profile_form": profile_form,
             "utility_links": ((reverse('profile-view',
                                       kwargs={"first_name": profile.first_name,
-                                              "last_name": profile.last_name, }) 
+                                              "last_name": profile.last_name, }), 
                               _("View profile"),
                               {}),)}
 

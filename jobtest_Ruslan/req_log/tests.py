@@ -11,7 +11,7 @@ class TestRequestLog(DatabaseTestCase, HttpTestCase):
     """Methods for testing request log"""
     def test_count_logs(self):
         """Go for two URL's and count request logs"""
-        self.go("/sdsd/something")
+        self.go("/something")
         self.go("/nonsence_url")
 
         self.assert_count(RequestLog, 2)

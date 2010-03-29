@@ -73,6 +73,16 @@ MEDIA_PREFIX = '/media'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'zelj#0!8duvg%9)6f2$!u9ep+(-&4)q=1-r0nh2bi(a^#n(we6'
 
+#needed for user registration
+#AUTH_PROFILE_MODULE = 'profiles.WaveAccountingProfile'
+#ACCOUNT_ACTIVATION_DAYS = 7
+#DEFAULT_FROM_EMAIL = 'welcome@'
+LOGIN_REDIRECT_URL = "/"
+
+
+#LANGUAGES = (('en', 'English'), ('es', 'Spanish'), ('hi','Hindu'))
+#DEFAULT_LANGUAGE = 1
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
@@ -84,6 +94,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.doc.XViewMiddleware',
     'jobtest_Ruslan.req_log.middleware.RequestLogMiddleware',
 )
 
@@ -99,7 +110,8 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.auth",
                               "django.core.context_processors.debug",
                               "django.core.context_processors.i18n",
                               "django.core.context_processors.media",
-               "jobtest_Ruslan.context_proc.processor.cont_settings",
+               "jobtest_Ruslan.context_proc.processor.cont_settings_",
+               "jobtest_Ruslan.context_processors.request_",
 )
 
 INSTALLED_APPS = (

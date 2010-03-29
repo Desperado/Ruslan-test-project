@@ -4,12 +4,22 @@
 """ Mydata tests """
 
 from tddspry.django import DatabaseTestCase, HttpTestCase
+from django.core.urlresolvers import reverse
 from models import Mybio
-from jobtest_Ruslan.test_data import test_account, test_contact
+from django.contrib.auth.models import User
+from jobtest_Ruslan.test_data import test_account, test_contact, test_profile
+
 
 
 class TestFixture(DatabaseTestCase):
     """Methods for testing fixture"""
+    def test_admin_user_login(self):
+        '''
+        Test admin password and login restored from fixture
+        '''
+        admin = User.objects.get(username=test_account["username"])
+        self.ok_(admin.check_password(test_account["password"]))
+
     def test_my_contact_exists(self):
         """
         Test if data is uploaded from fixture
@@ -20,13 +30,22 @@ class TestFixture(DatabaseTestCase):
 
 class TestContactsViews(HttpTestCase):
     """Methods for testing contacts views"""
+    def test_login_required(self):
+        '''
+        Test if login required on contacts page
+        '''
+        self.go(reverse("profile-edit", kwargs=test_profile))
+        self.find("Login required")
+
     def test_contacts_view(self):
         """
         Test if contact view contains all relevant data from fixture
         """
         self.login(test_account["username"],
-                  test_account["password"], \
-                        'accounts/login/?next=/')
+                   test_account["password"], 
+                   url=reverse("login") + "?next=" + \
+                       reverse("profile",
+                               kwargs=test_profile))
         self.find(test_contact["bio"])
         self.find(test_contact["first_name"])
         self.find(test_contact["last_name"])
@@ -38,8 +57,10 @@ class TestContactsViews(HttpTestCase):
         Test if calendar widget is loaded
         """
         self.login(test_account["username"],
-                  test_account["password"], \
-                        'accounts/login/?next=/')
+                   test_account["password"], 
+                   url=reverse("login") + "?next=" + \
+                       reverse("profile",
+                               kwargs=test_profile))
         self.find("/media/js/jquery-1.4.2.min.js")
         self.find("/media/datepicker/datepicker.js")
         self.find("/media/datepicker/css/datepicker.css")
@@ -53,8 +74,10 @@ class TestContactsForm(HttpTestCase):
         Test contact edit form
         '''
         self.login(test_account["username"],
-                  test_account["password"], \
-                        'accounts/login/?next=/')
+                   test_account["password"], 
+                   url=reverse("login") + "?next=" + \
+                       reverse("profile",
+                               kwargs=test_profile))
         self.fv("1", "bio", "Who was born January 27?")
         self.fv("1", "first_name", "First Name")
         self.fv("1", "last_name", "Last Name")

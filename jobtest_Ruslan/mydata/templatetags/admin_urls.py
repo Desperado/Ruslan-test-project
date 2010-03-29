@@ -22,7 +22,10 @@ class AdminPageUrlNode(template.Node):
         self.action = action
 
     def render(self, context):
-        variable = self.variable.resolve(context)
+        try:
+            variable = self.variable.resolve(context)
+        except VariableDoesNotExist, e:
+            return
         if issubclass(variable.__class__, models.Model):
             try:
                 return reverse('admin:%s_%s_%s' % (variable._meta.app_label,

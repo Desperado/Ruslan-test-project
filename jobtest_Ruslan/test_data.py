@@ -1,6 +1,9 @@
 test_account = {"username": "baby",
                 "password": "77722255"}
 
+test_profile = {"first_name": "Ruslan",
+                "last_name": "Strazhnyk"}
+
 
 test_contact = {"bio": "I was born January 27, 1984, Aquarius, like " +
                                "music, mountain bike and snowboard...",

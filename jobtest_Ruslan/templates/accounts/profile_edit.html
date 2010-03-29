@@ -74,13 +74,13 @@ $(document).ready(function(){
   });
 </script>
 {% endblock media %}
-<form class = "ajax_form" method="POST">
+<form class = "ajax_form" method="POST" id="ajaxform">
 
     <table>
     {{ profile_form.as_table }}
     {{ contact_formset.management_form }}
     </table>
-    <input type="submit" value="Submit">
+    <input style="float:center" type="submit" value="Submit">
 </form>
 
 <h4><a href="/accounts/logout">Logout</a></h4>

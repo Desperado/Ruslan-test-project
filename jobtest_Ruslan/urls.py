@@ -9,10 +9,11 @@ from django.core.urlresolvers import reverse
 
 admin.autodiscover()
 
+
 def index(request):
     return HttpResponseRedirect(reverse("profile-view",
-                                        kwargs={"first_name":"Ruslan",
-                                                "last_name":"Strazhnyk"}))
+                                        kwargs={"first_name": "Ruslan",
+                                                "last_name": "Strazhnyk"}))
 
 urlpatterns = patterns('',
         url(r'^$', index, name="index"),
@@ -23,7 +24,6 @@ urlpatterns = patterns('',
         url(r'^accounts/logout/$', 'django.contrib.auth.views.logout',\
            {'template_name': 'registration/logout.html'}, name="logout"),
         url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-        
 
 )
 

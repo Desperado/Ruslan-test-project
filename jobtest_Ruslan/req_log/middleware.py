@@ -30,7 +30,7 @@ class RequestLogMiddleware(object):
             self.log["files"] = {}
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        if hasattr(self,"log"):
+        if hasattr(self, "log"):
             self.log["view"] = "%s:%s" % (view_func.__module__,
                                          view_func.__name__)
             self.log["view_args"] = view_args
@@ -39,7 +39,7 @@ class RequestLogMiddleware(object):
         
         
     def process_response(self, request, response):
-        if hasattr(self,"log"):
+        if hasattr(self, "log"):
             self.log["response_status"] = response.status_code
             RequestLog.objects.create(**self.log)
         return response

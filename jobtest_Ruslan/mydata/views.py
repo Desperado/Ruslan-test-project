@@ -47,26 +47,22 @@ def contact_edit(request, first_name, last_name):
         profile_form = ProfileForm(instance=profile)
 
     return {
-            "profile":profile,
+            "profile": profile,
             "profile_form": profile_form,
-            "utility_links":((reverse('profile-view',
-                                      kwargs={"first_name":profile.first_name,
-                                              "last_name":profile.last_name,}),
+            "utility_links": ((reverse('profile-view',
+                                      kwargs={"first_name": profile.first_name,
+                                              "last_name": profile.last_name, }) 
                               _("View profile"),
-                              {}
-                              ),)
-           }
+                              {}),)}
 
 @render_to("accounts/profile_view.html")
 def contact_view(request, first_name, last_name):
     profile = get_object_or_404(Mybio, 
                                 first_name=first_name, 
                                 last_name=last_name)
-    return {"profile":profile,
-            "utility_links":((reverse('profile-edit',
-                                      kwargs={"first_name":profile.first_name,
-                                              "last_name":profile.last_name,}),
+    return {"profile": profile,
+            "utility_links": ((reverse('profile-edit',
+                                      kwargs={"first_name": profile.first_name,
+                                              "last_name": profile.last_name, }),
                               _("Edit profile"),
-                              {}
-                              ),)
-            }
+                              {}),)}

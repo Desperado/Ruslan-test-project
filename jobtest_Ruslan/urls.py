@@ -1,19 +1,14 @@
 #!/usr/bin/python
 # -*- coding: UTF8 -*-
+# urls.py
 
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from views import index
 
 admin.autodiscover()
 
-
-def index(request):
-    return HttpResponseRedirect(reverse("profile-view",
-                                        kwargs={"first_name": "Ruslan",
-                                                "last_name": "Strazhnyk"}))
 
 urlpatterns = patterns('',
         url(r'^$', index, name="index"),

@@ -35,8 +35,7 @@ def contact_edit(request, first_name, last_name):
     @param last_name: Profile.last_name
     '''
     profile = get_object_or_404(Mybio, 
-                                first_name=first_name,
-                                last_name=last_name)
+                                pk=1)
 
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, instance=profile)

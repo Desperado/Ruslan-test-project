@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: UTF8 -*-
+# shortcuts.py
+
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
